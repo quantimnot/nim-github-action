@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Test Nim GitHub Action
+
+concurrency:
+  group: Test Nim GitHub Action
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - 'pre.js'
+      - 'main.js'
+      - 'post.js'
+      - 'action.yml'
+      - 'package.json'
+      - '.github/workflows/test.yml'
+  push:
+    paths:
+      - 'pre.js'
+      - 'main.js'
+      - 'post.js'
+      - 'action.yml'
+      - 'package.json'
+      - '.github/workflows/test.yml'
+
+jobs:
+  test:
+    name: test ${{ matrix.runner }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: hello
+        uses: './'
+        with:
+          who-to-greet: user
