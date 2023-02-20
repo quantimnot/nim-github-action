@@ -10,9 +10,10 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node16'
-  # NOTE: The inputs are passed to `pre`, `main`, and `post`.
-  pre: 'pre.js'
-  # pre-if: 'true'
+  # NOTE: Here are some observations on 2023-02-19:
+  #   - The inputs are passed to `pre`, `main`, and `post`.
+  #   - `pre` will not execute when the action is local (./).
+  #   - The environment variables are the same for `pre`, `main`, and `post`.
+  #   - `pre`, `main`, and `post` are repeated for each action call
+  # I don't see any value in `pre` or `post`.
   main: 'main.js'
-  post: 'main.js'
-  # post-if: 'true'

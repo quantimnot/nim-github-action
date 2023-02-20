@@ -41,6 +41,3 @@ jobs:
         uses: './'
         with:
           who-to-greet: user1
-      - uses: './'
-        with:
-          who-to-greet: user2
