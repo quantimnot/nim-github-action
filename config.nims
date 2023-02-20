@@ -1,4 +1,5 @@
 --backend:js
+--define:nodejs
 --define:danger
 --panics:on
 --stackTrace:off
