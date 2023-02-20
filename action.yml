@@ -10,6 +10,7 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node16'
+  # NOTE: The inputs are passed to `pre`, `main`, and `post`.
   pre: 'pre.js'
   # pre-if: 'true'
   main: 'main.js'
